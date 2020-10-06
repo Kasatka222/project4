@@ -1,0 +1,33 @@
+#include "pch.h"
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    int a, b, umn, del;
+
+	cout << "Enter a:" << endl;
+	cin >> a;
+	cout << "Enter b:" << endl;
+	cin >> b;
+
+
+	__asm
+	{
+		mov eax, a // получение числа а 
+		mov ebx, b // получение числв б
+		imul eax, ebx // перемножение чисел а и б (с учетом знака)
+		mov umn, eax // занесение результата 
+
+		mov eax, a // получение числа а 
+		mov edx, 0 //  обнуление регистра
+		mov ebx, b // получение числв б
+		idiv ebx   // деление чисел а и б (с учетом знака)
+		mov del, eax // занесение результата 
+	}
+	cout << "umn=" << umn << endl;
+	cout << "del=" << del << endl;
+
+	system("pause");
+	return 0;
+}
